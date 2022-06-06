@@ -1,6 +1,6 @@
-FROM node:16-alpine
+FROM node:16-bullseye
 
-RUN apk add bash frotz
+RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y bash frotz && ln -s /usr/games/dfrotz /usr/bin/dfrotz
 RUN npm install -g discord-frotz
 
 ENTRYPOINT ["/bin/bash", "-c"]
